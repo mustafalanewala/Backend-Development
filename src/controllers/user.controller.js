@@ -47,6 +47,7 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new ApiError(409, "User already exists");
   }
 
+  // Postman not able to upload files
   const avatarLocalPath = req.files?.avatar[0]?.path;
   // const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
@@ -135,8 +136,8 @@ const loginUser = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .cookie("accessToken, options")
-    .cookie("refreshToken, options")
+    .cookie("accessToken", options)
+    .cookie("refreshToken", options)
     .json(
       new ApiResponse(
         200,
